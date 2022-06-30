@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.scss';
+import axios from 'axios';
 
 const MainPage = () => {
+    const [ products, setProducts ] useState([]);
+    useEffect(()=>{
+        axios.get("http://localhost:3000/products")
+        .then((result)=>{
+        setProducts(result.products);
+        console.log(products);
+    })
+    })
     return (
         <div>
             <div id='main'>
